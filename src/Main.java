@@ -8,17 +8,7 @@ import java.sql.*;
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Hello world!");
-
-        // Load the SQLite JDBC driver
-        try {
-            Class.forName("org.sqlite.jdbc");
-        } catch (ClassNotFoundException e) {
-            System.err.println("Could not load SQLite JDBC driver: " + e.getMessage());
-            return;
-        }
-
-        System.out.println("Hello world!");
+         System.out.println("Hello world!");
 
         // Create a new customer and add some skills
         Customer customer1 = new Customer("jdoe123", "John Doe", "123 Main St", "jdoe@example.com", 123, "");
@@ -57,7 +47,7 @@ public class Main {
 
         try {
             // Connect to the SQLite database
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:../../everhour.sqlite");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:everhour.sqlite");
 
 
 
