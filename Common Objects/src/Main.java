@@ -1,6 +1,19 @@
-public class Main {
-    public static void main(String[] args) {
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
+public class Main {
+    public static void main(String[] args) throws SQLException {
+
+        // Load the SQLite JDBC driver
+        try {
+            Class.forName("org.sqlite.jdbc");
+        } catch (ClassNotFoundException e) {
+            System.err.println("Could not load SQLite JDBC driver: " + e.getMessage());
+            return;
+        }
 
         System.out.println("Hello world!");
 
@@ -38,5 +51,37 @@ public class Main {
             System.out.println(skill.getName() + ": Level " + skill.getLevel());
         }
 
+
+        try {
+            // Connect to the SQLite database
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:../../everhour.sqlite");
+
+
+
+            // Query the database for room equipment
+            int roomId = 1;
+            PreparedStatement stmt = conn.prepareStatement(
+                    "SELECT equipment.name, equipment.quantity " +
+                            "FROM equipment " +
+                            "JOIN room_equipment ON equipment.id = room_equipment.equipment_id " +
+                            "JOIN rooms ON room_equipment.room_id = rooms.id " +
+                            "WHERE rooms.id = ?");
+            stmt.setInt(1, roomId);
+            ResultSet rs = stmt.executeQuery();
+
+            // Print the results
+            System.out.println("Equipment in room " + roomId + ":");
+            while (rs.next()) {
+                String name = rs.getString("name");
+                int quantity = rs.getInt("quantity");
+                System.out.println("- " + name + ": " + quantity);
+            }
+
+            // Close the database connection
+            conn.close();
+        } catch (SQLException e) {
+            System.err.println("Error querying the database: " + e.getMessage());
+        }
     }
+
 }
