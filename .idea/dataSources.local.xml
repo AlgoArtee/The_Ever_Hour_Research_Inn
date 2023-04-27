@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="IU-231.8109.175">
-    <data-source name="everhour.sqlite" uuid="03a4ab1e-72ea-4ca6-909f-37672f64260a">
+    <data-source name="everhour.sqlite" uuid="c1632d96-d0f4-464e-ad2a-d4354fe0bc23">
       <database-info product="SQLite" version="3.40.1" jdbc-version="4.2" driver-name="SQLite JDBC" driver-version="3.40.1.0" dbms="SQLITE" exact-version="3.40.1" exact-driver-version="3.40">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
