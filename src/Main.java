@@ -47,7 +47,7 @@ public class Main {
 
         try {
             // Connect to the SQLite database
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:everhour.sqlite");
+            //Connection conn = DriverManager.getConnection("jdbc:sqlite:C:/Users/Mewxy/Desktop/Sem4/Programmierpraktikum/everhour.sqlite");
 
 
 
